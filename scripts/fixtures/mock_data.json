@@ -1,0 +1,148 @@
+[
+  {
+    "model": "earnings.spinwheelreward",
+    "pk": "a1000000-0000-0000-0000-000000000001",
+    "fields": {
+      "label": "KES 10",
+      "reward_type": "cash",
+      "reward_value": "10.00",
+      "probability": "0.1500",
+      "color": "#22c55e",
+      "is_active": true
+    }
+  },
+  {
+    "model": "earnings.spinwheelreward",
+    "pk": "a1000000-0000-0000-0000-000000000002",
+    "fields": {
+      "label": "KES 50",
+      "reward_type": "cash",
+      "reward_value": "50.00",
+      "probability": "0.0500",
+      "color": "#f59e0b",
+      "is_active": true
+    }
+  },
+  {
+    "model": "earnings.spinwheelreward",
+    "pk": "a1000000-0000-0000-0000-000000000003",
+    "fields": {
+      "label": "KES 100",
+      "reward_type": "cash",
+      "reward_value": "100.00",
+      "probability": "0.0200",
+      "color": "#ef4444",
+      "is_active": true
+    }
+  },
+  {
+    "model": "earnings.spinwheelreward",
+    "pk": "a1000000-0000-0000-0000-000000000004",
+    "fields": {
+      "label": "50 Points",
+      "reward_type": "points",
+      "reward_value": "50.00",
+      "probability": "0.2000",
+      "color": "#6366f1",
+      "is_active": true
+    }
+  },
+  {
+    "model": "earnings.spinwheelreward",
+    "pk": "a1000000-0000-0000-0000-000000000005",
+    "fields": {
+      "label": "100 Points",
+      "reward_type": "points",
+      "reward_value": "100.00",
+      "probability": "0.1000",
+      "color": "#8b5cf6",
+      "is_active": true
+    }
+  },
+  {
+    "model": "earnings.spinwheelreward",
+    "pk": "a1000000-0000-0000-0000-000000000006",
+    "fields": {
+      "label": "Free Spin",
+      "reward_type": "free_spin",
+      "reward_value": "0.00",
+      "probability": "0.1000",
+      "color": "#06b6d4",
+      "is_active": true
+    }
+  },
+  {
+    "model": "earnings.spinwheelreward",
+    "pk": "a1000000-0000-0000-0000-000000000007",
+    "fields": {
+      "label": "Try Again",
+      "reward_type": "nothing",
+      "reward_value": "0.00",
+      "probability": "0.3800",
+      "color": "#6b7280",
+      "is_active": true
+    }
+  },
+  {
+    "model": "earnings.youtubead",
+    "pk": "b1000000-0000-0000-0000-000000000001",
+    "fields": {
+      "title": "Product Launch Ad #1",
+      "youtube_video_id": "dQw4w9WgXcQ",
+      "thumbnail_url": "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
+      "reward_points": 10,
+      "reward_amount": "2.00",
+      "duration_seconds": 30,
+      "is_active": true,
+      "daily_limit_per_user": 5,
+      "total_views": 0
+    }
+  },
+  {
+    "model": "earnings.youtubead",
+    "pk": "b1000000-0000-0000-0000-000000000002",
+    "fields": {
+      "title": "Brand Awareness Campaign",
+      "youtube_video_id": "9bZkp7q19f0",
+      "thumbnail_url": "https://img.youtube.com/vi/9bZkp7q19f0/hqdefault.jpg",
+      "reward_points": 15,
+      "reward_amount": "3.00",
+      "duration_seconds": 45,
+      "is_active": true,
+      "daily_limit_per_user": 3,
+      "total_views": 0
+    }
+  },
+  {
+    "model": "earnings.task",
+    "pk": "c1000000-0000-0000-0000-000000000001",
+    "fields": {
+      "title": "Follow us on Twitter/X",
+      "description": "Follow @EarnChain on Twitter and like our pinned post. Submit your username as proof.",
+      "task_type": "social",
+      "reward_points": 50,
+      "reward_amount": "5.00",
+      "action_url": "https://twitter.com/EarnChain",
+      "is_active": true,
+      "max_completions": null,
+      "current_completions": 0,
+      "expires_at": null
+    }
+  },
+  {
+    "model": "earnings.task",
+    "pk": "c1000000-0000-0000-0000-000000000002",
+    "fields": {
+      "title": "Complete a Short Survey",
+      "description": "Fill out our 5-minute user experience survey and earn 30 points.",
+      "task_type": "survey",
+      "reward_points": 30,
+      "reward_amount": "0.00",
+      "action_url": "https://forms.example.com/earnchain-survey",
+      "is_active": true,
+      "max_completions": 500,
+      "current_completions": 0,
+      "expires_at": null
+    }
+  }
+]

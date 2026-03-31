@@ -37,7 +37,7 @@ django-sendgrid-v5==1.2.3
 drf-spectacular==0.26.5
 
 # Utilities
-Pillow==10.1.0
+pillow==12.1.1
 django-filter==23.5
 django-storages==1.14.2
 python-decouple==3.8
@@ -45,7 +45,7 @@ shortuuid==1.0.11
 
 # Testing
 factory-boy==3.3.0
-faker==20.1.0
+faker
 
 # Monitoring
-sentry-sdk==1.38.0
+sentry-sdk

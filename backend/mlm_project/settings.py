@@ -8,6 +8,9 @@ import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+GOOGLE_CLIENT_ID = config('GOOGLE_CLIENT_ID', default='')
+GOOGLE_CLIENT_SECRET = config('GOOGLE_CLIENT_SECRET', default='')
+
 # Security
 SECRET_KEY = config('SECRET_KEY', default='dev-secret-key-change-in-production')
 DEBUG = config('DEBUG', default=False, cast=bool)
@@ -206,12 +209,22 @@ SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'SCOPE': ['profile', 'email'],
         'AUTH_PARAMS': {'access_type': 'online'},
+        'OAUTH_PKCE_ENABLED': True,
         'APP': {
-            'client_id': config('GOOGLE_CLIENT_ID', default=''),
-            'secret': config('GOOGLE_CLIENT_SECRET', default=''),
+            'client_id':     config('GOOGLE_CLIENT_ID',     default=''),
+            'secret':        config('GOOGLE_CLIENT_SECRET', default=''),
+            'key':           '',
         }
     }
 }
+
+# AllAuth settings
+ACCOUNT_EMAIL_REQUIRED         = True
+ACCOUNT_EMAIL_VERIFICATION     = 'optional'   # Google accounts are pre-verified
+ACCOUNT_AUTHENTICATION_METHOD  = 'email'
+ACCOUNT_USERNAME_REQUIRED       = False
+SOCIALACCOUNT_AUTO_SIGNUP       = True         # Auto-create user on first Google login
+SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'      # Trust Google's email verification
 
 # M-Pesa
 MPESA_CONSUMER_KEY = config('MPESA_CONSUMER_KEY', default='')

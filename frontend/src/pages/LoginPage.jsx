@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { GoogleLogin } from '@react-oauth/google'
+import toast from 'react-hot-toast'
+import api from '@/utils/api'
 import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import { loginUser, clearError } from '@/store/slices/authSlice'
@@ -34,7 +37,7 @@ export default function LoginPage() {
           className="relative z-10 text-center"
         >
           <div className="w-16 h-16 rounded-2xl bg-brand-500 flex items-center justify-center text-black font-black text-3xl mx-auto mb-6 shadow-lg shadow-brand-500/30">
-            E
+            ST
           </div>
           <h1 className="font-display font-extrabold text-4xl text-white mb-3">Smart Trader</h1>
           <p className="text-slate-400 text-lg max-w-xs mx-auto leading-relaxed">
@@ -64,7 +67,7 @@ export default function LoginPage() {
           className="w-full max-w-md"
         >
           <div className="lg:hidden flex items-center gap-2 mb-8">
-            <div className="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center text-black font-black text-sm">E</div>
+            <div className="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center text-black font-black text-sm">ST</div>
             <span className="font-display font-bold text-lg gradient-text">Smart Trader</span>
           </div>
 
@@ -109,6 +112,45 @@ export default function LoginPage() {
               </Link>
             </div>
 
+            {/* Divider */}
+            <div className="flex items-center gap-3 my-5">
+              <div className="flex-1 h-px bg-slate-800" />
+              <span className="text-slate-600 text-xs">or</span>
+              <div className="flex-1 h-px bg-slate-800" />
+            </div>
+
+            <div className="w-full flex justify-center">
+              <GoogleLogin
+                onSuccess={async (credentialResponse) => {
+                  if (!credentialResponse?.credential) {
+                    return toast.error('Google login failed: no ID token received')
+                  }
+
+                  try {
+                    const { data } = await api.post('/auth/google/', {
+                      token: credentialResponse.credential, // ✅ THIS is the ID token
+                    })
+
+                    localStorage.setItem('access_token', data.access)
+                    localStorage.setItem('refresh_token', data.refresh)
+
+                    toast.success(
+                      data.created
+                        ? 'Account created! Welcome 🎉'
+                        : 'Welcome back!'
+                    )
+                    console.log('Google response:', data)
+                    window.location.href = '/dashboard'
+                  } catch (err) {
+                    console.error(err)
+                    toast.error('Google sign-in failed. Please try again.')
+                  }
+                }}
+                onError={() => toast.error('Google sign-in was cancelled')}
+              />
+            </div>
+
+            
             <button type="submit" disabled={loading} className="btn-primary w-full mt-2">
               {loading ? (
                 <span className="flex items-center justify-center gap-2">

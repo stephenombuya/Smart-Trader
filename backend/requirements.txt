@@ -2,6 +2,7 @@
 Django==4.2.9
 djangorestframework==3.14.0
 django-cors-headers==4.3.1
+dj_database-url==3.1.2
 
 # Auth
 djangorestframework-simplejwt==5.3.0
@@ -49,3 +50,6 @@ faker
 
 # Monitoring
 sentry-sdk
+
+google-auth==2.28.0
+google-auth-oauthlib==1.2.0

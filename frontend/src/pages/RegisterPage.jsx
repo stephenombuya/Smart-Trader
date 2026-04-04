@@ -3,6 +3,11 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
+
+import { GoogleLogin } from '@react-oauth/google'
+import toast from 'react-hot-toast'
+import api from '@/utils/api'
+
 import { registerUser, clearError } from '@/store/slices/authSlice'
 
 export default function RegisterPage() {
@@ -32,6 +37,27 @@ export default function RegisterPage() {
     </div>
   )
 
+  // const handleGoogleSuccess = async (tokenResponse) => {
+  //   if (!tokenResponse?.credential) {
+  //     return toast.error('Google login failed: no ID token received');
+  //   }
+
+  //   try {
+  //     const { data } = await api.post('/auth/google/', {
+  //       token: tokenResponse.credential,
+  //       // If on register page, pass referral code:
+  //       referral_code: params?.get('ref') || '',
+  //     })
+  //     localStorage.setItem('access_token',  data.access)
+  //     localStorage.setItem('refresh_token', data.refresh)
+  //     toast.success(data.created ? 'Account created! Welcome 🎉' : 'Welcome back!')
+  //     navigate('/dashboard')
+  //   } catch (err) {
+  //     toast.error('Google sign-in failed. Please try again.')
+  //   }
+  // }
+
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-surface-950 p-6">
       <motion.div
@@ -40,7 +66,7 @@ export default function RegisterPage() {
         className="w-full max-w-md"
       >
         <div className="flex items-center gap-2 mb-8">
-          <div className="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center text-black font-black text-sm">E</div>
+          <div className="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center text-black font-black text-sm">ST</div>
           <span className="font-display font-bold text-lg gradient-text">Smart Trader</span>
         </div>
 
@@ -99,6 +125,47 @@ export default function RegisterPage() {
             <input {...register('referral_code')} placeholder="e.g. ABC12345" className="input font-mono uppercase" />
           </div>
 
+          {/* Divider */}
+          <div className="flex items-center gap-3 my-5">
+            <div className="flex-1 h-px bg-slate-800" />
+            <span className="text-slate-600 text-xs">or</span>
+            <div className="flex-1 h-px bg-slate-800" />
+          </div>
+
+          <div className="w-full flex justify-center">
+            <GoogleLogin
+              onSuccess={async (credentialResponse) => {
+                if (!credentialResponse?.credential) {
+                  return toast.error('Google login failed: no ID token received')
+                }
+
+                try {
+                  const { data } = await api.post('/auth/google/', {
+                    token: credentialResponse.credential, // ✅ THIS is the ID token
+                    referral_code: params?.get('ref') || '',
+                  })
+
+                  localStorage.setItem('access_token', data.access)
+                  localStorage.setItem('refresh_token', data.refresh)
+
+                  toast.success(
+                    data.created
+                      ? 'Account created! Welcome 🎉'
+                      : 'Welcome back!'
+                  )
+
+                  window.location.href = '/dashboard'
+                } catch (err) {
+                  console.error(err)
+                  toast.error('Google sign-in failed. Please try again.')
+                }
+              }}
+              onError={() => toast.error('Google sign-in was cancelled')}
+            />
+          </div>
+
+
+          
           <button type="submit" disabled={loading} className="btn-primary w-full mt-2">
             {loading ? 'Creating account...' : 'Create Account — It\'s Free'}
           </button>

@@ -1,8 +1,20 @@
-# 💹 Smart Trader MLM Platform
+#  Smart Trader MLM Platform
 
 A full-stack multi-level marketing (MLM) web platform where users earn through referrals, watching ads, spinning a reward wheel, and completing tasks. Built with Django (backend), React (frontend), PostgreSQL, and WebSockets for real-time features.
 
-## 📋 Features
+<div>
+
+  <!-- Repository Analytics -->
+![GitHub repo size](https://img.shields.io/github/repo-size/stephenombuya/Smart-Trader)
+![GitHub language count](https://img.shields.io/github/languages/count/stephenombuya/Smart-Trader)
+![GitHub top language](https://img.shields.io/github/languages/top/stephenombuya/Smart-Trader)
+![GitHub last commit](https://img.shields.io/github/last-commit/stephenombuya/Smart-Trader)
+![GitHub contributors](https://img.shields.io/github/contributors/stephenombuya/Smart-Trader)
+
+</div>
+
+
+##  Features
 
 - **User System**: Registration, email verification, JWT auth, social login (Google), profile with wallet & referral code
 - **Referral System**: 5-level MLM tree with automatic commission calculation
@@ -12,7 +24,7 @@ A full-stack multi-level marketing (MLM) web platform where users earn through r
 - **Payments**: M-Pesa STK Push integration for withdrawals
 - **Security**: Input validation, rate limiting, CSRF protection, Argon2 password hashing
 
-## 🗂️ Project Structure
+##  Project Structure
 
 ```
 mlm-platform/
@@ -42,7 +54,7 @@ mlm-platform/
 └── README.md
 ```
 
-## ⚙️ Tech Stack
+##  Tech Stack
 
 | Layer         | Technology                        |
 |---------------|-----------------------------------|
@@ -95,11 +107,11 @@ docker-compose exec backend python manage.py createsuperuser
 - Django Admin: http://localhost:8000/admin/
 - API Docs (Swagger): http://localhost:8000/api/docs/
 
-## 🔑 Environment Variables
+##  Environment Variables
 
 See backend/config/.env.example for all required variables.
 
-## 🏗️ MLM Commission Structure
+##  MLM Commission Structure
 
 | Level | Relationship        | Commission Rate |
 |-------|---------------------|-----------------|
@@ -109,7 +121,7 @@ See backend/config/.env.example for all required variables.
 | 4     | Level 4 downline    | 2%              |
 | 5     | Level 5 downline    | 1%              |
 
-## ⚠️ YouTube Ad Integration Note
+##  YouTube Ad Integration Note
 
 The YouTube ad-watching feature uses mock video IDs in development. For production:
 1. Register for the YouTube Data API v3
@@ -117,7 +129,7 @@ The YouTube ad-watching feature uses mock video IDs in development. For producti
 3. Implement server-side view verification using the YouTube Reporting API
 4. See backend/apps/earnings/youtube_service.py for integration points
 
-## 🔐 Security Features
+##  Security Features
 
 - JWT token rotation with refresh tokens
 - Password hashing with Argon2
@@ -127,7 +139,7 @@ The YouTube ad-watching feature uses mock video IDs in development. For producti
 - XSS / clickjacking protection headers
 - Input sanitization on all endpoints
 
-## 📱 M-Pesa Integration
+##  M-Pesa Integration
 
 Uses Safaricom Daraja API (STK Push):
 1. Configure credentials in .env
@@ -135,7 +147,7 @@ Uses Safaricom Daraja API (STK Push):
 3. Callback URL updates transaction status
 4. Minimum withdrawal: KES 100
 
-## 🧪 Running Tests
+##  Running Tests
 
 ```bash
 # Backend
@@ -145,7 +157,7 @@ docker-compose exec backend python manage.py test
 docker-compose exec frontend npm test
 ```
 
-## 🌐 Production Deployment
+##  Production Deployment
 
 ```bash
 docker-compose -f docker-compose.prod.yml up --build -d
@@ -153,6 +165,5 @@ docker-compose exec backend python manage.py migrate
 docker-compose exec backend python manage.py collectstatic
 ```
 
-## 📄 License
-
-MIT License
+##  License
+This project is licensed under the MIT License. 

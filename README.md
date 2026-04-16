@@ -2,18 +2,6 @@
 
 A full-stack multi-level marketing (MLM) web platform where users earn through referrals, watching ads, spinning a reward wheel, and completing tasks. Built with Django (backend), React (frontend), PostgreSQL, and WebSockets for real-time features.
 
-<div>
-
-  <!-- Repository Analytics -->
-![GitHub repo size](https://img.shields.io/github/repo-size/stephenombuya/Smart-Trader)
-![GitHub language count](https://img.shields.io/github/languages/count/stephenombuya/Smart-Trader)
-![GitHub top language](https://img.shields.io/github/languages/top/stephenombuya/Smart-Trader)
-![GitHub last commit](https://img.shields.io/github/last-commit/stephenombuya/Smart-Trader)
-![GitHub contributors](https://img.shields.io/github/contributors/stephenombuya/Smart-Trader)
-
-</div>
-
-
 ##  Features
 
 - **User System**: Registration, email verification, JWT auth, social login (Google), profile with wallet & referral code
